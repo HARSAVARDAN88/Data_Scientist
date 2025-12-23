@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -10,7 +11,11 @@ st.title("⚡ Electricity Bill Prediction App")
 st.write("This app predicts monthly electricity bill using Linear Regression.")
 
 # Load Dataset
-df = pd.read_csv("electricity_bill_dataset.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(BASE_DIR, "electricity_bill_dataset.csv")
+
+df = pd.read_csv(csv_path)
+
 
 # Show dataset
 if st.checkbox("Show Dataset"):
