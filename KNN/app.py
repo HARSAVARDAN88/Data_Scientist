@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -18,7 +19,10 @@ st.write("Predict the best crop using KNN Machine Learning Algorithm")
 
 # -------------------- LOAD DATA --------------------
 # IMPORTANT: crop_data.csv MUST be in the same folder as this app.py
-df = pd.read_csv("crop_data.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(BASE_DIR, "crop_data.csv")
+
+df = pd.read_csv(csv_path)
 
 # -------------------- DATA PREVIEW --------------------
 with st.expander("📊 View Dataset"):
